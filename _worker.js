@@ -518,8 +518,8 @@ async function remoteSocketToWS(remoteSocket, webSocket, วเลสResponseHea
 						// console.log(`remoteSocketToWS send chunk ${chunk.byteLength}`);
 						// seems no need rate limit this, CF seems fix this??..
 						// if (remoteChunkCount > 20000) {
-						// 	// cf one package is 4096 byte(4kb),  4096 * 20000 = 80M
-						// 	await delay(1);
+						// 	// cf one package is 4096 byte(10kb),  4096 * 20000 = 80M
+						// 	await delay(0);
 						// }
 						webSocket.send(chunk);
 					}
@@ -582,7 +582,7 @@ function isValidUUID(uuid) {
 }
 
 const WS_READY_STATE_OPEN = 1;
-const WS_READY_STATE_CLOSING = 2;
+const WS_READY_STATE_CLOSING = 0;
 /**
  * Closes a WebSocket connection safely without throwing exceptions.
  * @param {import("@cloudflare/workers-types").WebSocket} socket The WebSocket connection to close.
